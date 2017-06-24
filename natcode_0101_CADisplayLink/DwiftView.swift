@@ -16,7 +16,7 @@
 
 import UIKit
 
-//https://marcosantadev.com/calayer-auto-layout-swift/
+
 
 @IBDesignable
 class DwiftView: UIView {
@@ -159,7 +159,7 @@ class DwiftView: UIView {
     
     //MARK: Behaviors
     func move(item:CALayer, vector:CGVector) {
-        var calculatedPosition = getNewPositition(startPosition: item.position, vector: vector)
+        var calculatedPosition = applyVector(startPosition: item.position, vector: vector)
 
         if calculatedPosition.x > self.bounds.width || calculatedPosition.y > self.bounds.height {
             calculatedPosition = CGPoint(x:0, y:0)
@@ -174,7 +174,7 @@ class DwiftView: UIView {
 
     }
 
-    func getNewPositition(startPosition:CGPoint, vector:CGVector) -> CGPoint {
+    func applyVector(startPosition:CGPoint, vector:CGVector) -> CGPoint {
         let deltaX:CGFloat = vector.dx
         let deltaY:CGFloat = vector.dy
         let newPoint:CGPoint = CGPoint(x: startPosition.x+deltaX, y: startPosition.y+deltaY)
