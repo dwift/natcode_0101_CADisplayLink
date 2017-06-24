@@ -23,8 +23,14 @@ class DwiftController: UIViewController, UICollisionBehaviorDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dwiftView.startUpdateLoop()
         
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        dwiftView.stopUpdateLoop()
+    
     }
     
     
