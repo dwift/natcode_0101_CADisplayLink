@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		D2F9EFE71EFECDDB00007790 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F9EFE61EFECDDB00007790 /* AppDelegate.swift */; };
-		D2F9EFE91EFECDDB00007790 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F9EFE81EFECDDB00007790 /* ViewController.swift */; };
+		D2F9EFE91EFECDDB00007790 /* DwiftController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F9EFE81EFECDDB00007790 /* DwiftController.swift */; };
 		D2F9EFEC1EFECDDB00007790 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2F9EFEA1EFECDDB00007790 /* Main.storyboard */; };
 		D2F9EFEE1EFECDDB00007790 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2F9EFED1EFECDDB00007790 /* Assets.xcassets */; };
 		D2F9EFF11EFECDDB00007790 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2F9EFEF1EFECDDB00007790 /* LaunchScreen.storyboard */; };
+		D2F9EFFA1EFECE6D00007790 /* DwiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F9EFF81EFECE6D00007790 /* DwiftView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D2F9EFE31EFECDDB00007790 /* natcode_0101_CADisplayLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = natcode_0101_CADisplayLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F9EFE61EFECDDB00007790 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D2F9EFE81EFECDDB00007790 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D2F9EFE81EFECDDB00007790 /* DwiftController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwiftController.swift; sourceTree = "<group>"; };
 		D2F9EFEB1EFECDDB00007790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2F9EFED1EFECDDB00007790 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2F9EFF01EFECDDB00007790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2F9EFF21EFECDDB00007790 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2F9EFF81EFECE6D00007790 /* DwiftView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DwiftView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				D2F9EFE61EFECDDB00007790 /* AppDelegate.swift */,
-				D2F9EFE81EFECDDB00007790 /* ViewController.swift */,
+				D2F9EFE81EFECDDB00007790 /* DwiftController.swift */,
+				D2F9EFF81EFECE6D00007790 /* DwiftView.swift */,
 				D2F9EFEA1EFECDDB00007790 /* Main.storyboard */,
 				D2F9EFED1EFECDDB00007790 /* Assets.xcassets */,
 				D2F9EFEF1EFECDDB00007790 /* LaunchScreen.storyboard */,
@@ -137,7 +140,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2F9EFE91EFECDDB00007790 /* ViewController.swift in Sources */,
+				D2F9EFE91EFECDDB00007790 /* DwiftController.swift in Sources */,
+				D2F9EFFA1EFECE6D00007790 /* DwiftView.swift in Sources */,
 				D2F9EFE71EFECDDB00007790 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
