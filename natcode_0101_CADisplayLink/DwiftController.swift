@@ -8,6 +8,7 @@
 
 //https://stackoverflow.com/questions/38112061/correct-handling-cleanup-etc-of-cadisplaylink-in-swift-custom-animation
 //https://www.raywenderlich.com/100939/how-to-create-an-elastic-animation-with-swift
+//https://stackoverflow.com/questions/34054861/uiimageview-rotation-animation-using-cadisplaylink-tracking-rotation
 
 import UIKit
 
