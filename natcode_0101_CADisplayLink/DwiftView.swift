@@ -78,6 +78,7 @@ class DwiftView: UIView {
     //MARK: Private Vars
     
     private let ball = CAShapeLayer()
+    private let compassImage = CAShapeLayer()
     private var orbitVector:CGVector = CGVector(dx:2.0, dy:6.0)
     
     //MARK: SetUp
@@ -94,6 +95,7 @@ class DwiftView: UIView {
         print("from superview ", self.convert(ball.position, from:superview))
         print("no conversion ", ball.position)
         layer.addSublayer(ball)
+        drawCompassImage()
         
     }
     
@@ -102,6 +104,7 @@ class DwiftView: UIView {
         //print("Hi!")
         move(item: ball, vector: orbitVector)
         orbitVector = updateVector(orbitVector)
+        move(item: compassImage, vector: orbitVector)
         
 
     }
@@ -162,6 +165,24 @@ class DwiftView: UIView {
         path.lineWidth = radius/10
         print("Got the ball path", startPoint!)
         return path
+    }
+    
+    func drawCompassImage(){
+        //https://stackoverflow.com/questions/37767336/cashapelayer-driving-me-bonkers
+        //Compass Bezel Ring
+        let baseCirclePath = UIBezierPath()
+        let baseCircleRadius = 70
+        
+        baseCirclePath.addArc(withCenter: CGPoint(x: CGFloat(self.frame.width/2), y: CGFloat(self.frame.width/2)), radius: CGFloat(baseCircleRadius), startAngle: CGFloat(-1*Double.pi/2), endAngle:CGFloat((Double.pi/2)*3), clockwise: true)
+        compassImage.path = baseCirclePath.cgPath
+        compassImage.frame = bounds
+        compassImage.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        compassImage.fillColor = UIColor.clear.cgColor;
+        compassImage.strokeColor = UIColor.white.cgColor
+        compassImage.lineDashPattern = [1.0,2.0]
+        compassImage.lineWidth = 10.0
+        self.layer.addSublayer(compassImage)
+        
     }
     
     //MARK: Behaviors

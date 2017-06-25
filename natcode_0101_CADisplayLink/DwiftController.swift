@@ -11,6 +11,7 @@
 //https://stackoverflow.com/questions/34054861/uiimageview-rotation-animation-using-cadisplaylink-tracking-rotation
 //http://stylekit.org/blog/2016/02/20/Core-animation/
 //https://marcosantadev.com/calayer-auto-layout-swift/
+//https://stackoverflow.com/questions/37767336/cashapelayer-driving-me-bonkers
 
 import UIKit
 
