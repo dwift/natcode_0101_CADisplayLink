@@ -9,6 +9,8 @@
 //https://stackoverflow.com/questions/38112061/correct-handling-cleanup-etc-of-cadisplaylink-in-swift-custom-animation
 //https://www.raywenderlich.com/100939/how-to-create-an-elastic-animation-with-swift
 //https://stackoverflow.com/questions/34054861/uiimageview-rotation-animation-using-cadisplaylink-tracking-rotation
+//http://stylekit.org/blog/2016/02/20/Core-animation/
+//https://marcosantadev.com/calayer-auto-layout-swift/
 
 import UIKit
 
@@ -19,8 +21,6 @@ class DwiftController: UIViewController, UICollisionBehaviorDelegate {
     var dwiftLayer:CALayer {
         get { return dwiftView.layer }
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +33,6 @@ class DwiftController: UIViewController, UICollisionBehaviorDelegate {
         dwiftView.stopUpdateLoop()
     
     }
-    
-    
-    
   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

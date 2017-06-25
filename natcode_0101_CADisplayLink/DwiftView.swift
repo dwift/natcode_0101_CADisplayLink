@@ -78,6 +78,7 @@ class DwiftView: UIView {
     //MARK: Private Vars
     
     private let ball = CAShapeLayer()
+    private var orbitVector:CGVector = CGVector(dx:2.0, dy:6.0)
     
     //MARK: SetUp
     func setUp() {
@@ -88,16 +89,19 @@ class DwiftView: UIView {
         layer.shadowRadius = 10.0
         
         ball.fillColor = UIColor.blue.cgColor
-        ball.path = getBallPath().cgPath
+        ball.path = getBallPath(location: CGPoint(x: 0, y:0)).cgPath
+        print(convert(ball.position, to:superview))
         layer.addSublayer(ball)
         
     }
     
     //MARK: Display Link Update and Control
     func updateLoop() {
-        print("Hi!")
-        let orbitVector:CGVector = CGVector(dx:2.0, dy:6.0)
+        //print("Hi!")
         move(item: ball, vector: orbitVector)
+        orbitVector = updateVector(orbitVector)
+        
+
     }
     
     //TODO: make these two private and tap based like example?
@@ -145,26 +149,27 @@ class DwiftView: UIView {
     
     //MARK: Paths
     private func getBallPath(location: CGPoint? = nil, in view: UIView? = nil) -> UIBezierPath {
-        var middle:CGPoint? = location
-        if middle == nil { middle = CGPoint(x: bounds.midX, y: bounds.midY) }
-        if view != nil { middle = self.convert(middle!, to: view) }
+        var startPoint:CGPoint? = location
+        if startPoint == nil { startPoint = CGPoint(x: bounds.midX, y: bounds.midY) }
+        if view != nil { startPoint = self.convert(startPoint!, to: view) }
         let radius = min(bounds.size.width, bounds.size.height) / 10
         let startAngle = CGFloat(0.0)
         let endAngle = CGFloat.pi*2
-        let path = UIBezierPath(arcCenter: middle!, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        let path = UIBezierPath(arcCenter: startPoint!, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         path.close()
         path.lineWidth = radius/10
+        print("Got the ball path")
         return path
     }
     
     //MARK: Behaviors
     func move(item:CALayer, vector:CGVector) {
-        var calculatedPosition = applyVector(startPosition: item.position, vector: vector)
+        let calculatedPosition = applyVector(startPosition: item.position, vector: vector)
 
-        if calculatedPosition.x > self.bounds.width || calculatedPosition.y > self.bounds.height {
-            calculatedPosition = CGPoint(x:0, y:0)
-
-        }
+//        if calculatedPosition.x > self.bounds.width || calculatedPosition.y > self.bounds.height {
+//            calculatedPosition = CGPoint(x:0, y:0)
+//
+//        }
         //turn off implicit layer animations by using transaction
         //necessary so can do the reset jump
         CATransaction.begin()
@@ -172,6 +177,29 @@ class DwiftView: UIView {
         item.position = calculatedPosition
         CATransaction.commit()
 
+    }
+    
+    func updateVector(_ vector:CGVector) -> CGVector {
+        var newVector = vector
+        
+        //convert(center, from: superview)
+        let adjustedBallPosition:CGPoint = ball.position
+        
+        //let adjustedBallPosition:CGPoint = convert(ball.position, from:self)
+    
+        let ballRadius = min(bounds.size.width, bounds.size.height) / 10
+        
+        
+        //Plus and minus are flipped because when they're thr right way it can't move. 
+        if ((adjustedBallPosition.x >= (bounds.maxX + ballRadius)) || (adjustedBallPosition.x <= (bounds.minX - ballRadius))) {
+            newVector.dx = vector.dx * -1;
+        }
+        if ((adjustedBallPosition.y >= (bounds.maxY + ballRadius)) || (adjustedBallPosition.y <= (bounds.minY - ballRadius))) {
+            newVector.dy = vector.dy * -1;
+        }
+        
+
+        return newVector
     }
 
     func applyVector(startPosition:CGPoint, vector:CGVector) -> CGPoint {
