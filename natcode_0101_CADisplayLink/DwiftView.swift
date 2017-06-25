@@ -89,8 +89,10 @@ class DwiftView: UIView {
         layer.shadowRadius = 10.0
         
         ball.fillColor = UIColor.blue.cgColor
-        ball.path = getBallPath(location: CGPoint(x: 0, y:0)).cgPath
-        print(convert(ball.position, to:superview))
+        ball.path = getBallPath().cgPath
+        //ball.path = getBallPath(location: CGPoint(x: 0, y:0)).cgPath
+        print("from superview ", self.convert(ball.position, from:superview))
+        print("no conversion ", ball.position)
         layer.addSublayer(ball)
         
     }
@@ -158,7 +160,7 @@ class DwiftView: UIView {
         let path = UIBezierPath(arcCenter: startPoint!, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         path.close()
         path.lineWidth = radius/10
-        print("Got the ball path")
+        print("Got the ball path", startPoint!)
         return path
     }
     
@@ -182,21 +184,31 @@ class DwiftView: UIView {
     func updateVector(_ vector:CGVector) -> CGVector {
         var newVector = vector
         
+        //TODO: what is the size of the ball layer?
+        
         //convert(center, from: superview)
         let adjustedBallPosition:CGPoint = ball.position
         
         //let adjustedBallPosition:CGPoint = convert(ball.position, from:self)
     
-        let ballRadius = min(bounds.size.width, bounds.size.height) / 10
+        let ballRadius = (min(bounds.size.width, bounds.size.height) / 10) - 10
         
         
-        //Plus and minus are flipped because when they're thr right way it can't move. 
-        if ((adjustedBallPosition.x >= (bounds.maxX + ballRadius)) || (adjustedBallPosition.x <= (bounds.minX - ballRadius))) {
+        //Plus and minus are flipped because when they're thr right way it can't move.
+        if ((adjustedBallPosition.x > (bounds.maxX + ballRadius)) || (adjustedBallPosition.x < (bounds.minX - ballRadius))) {
             newVector.dx = vector.dx * -1;
         }
-        if ((adjustedBallPosition.y >= (bounds.maxY + ballRadius)) || (adjustedBallPosition.y <= (bounds.minY - ballRadius))) {
+        if ((adjustedBallPosition.y > (bounds.maxY + ballRadius)) || (adjustedBallPosition.y < (bounds.minY - ballRadius))) {
             newVector.dy = vector.dy * -1;
         }
+        
+        
+//        if ((adjustedBallPosition.x > (bounds.maxX - ballRadius)) || (adjustedBallPosition.x < (bounds.minX + ballRadius))) {
+//            newVector.dx = vector.dx * -1;
+//        }
+//        if ((adjustedBallPosition.y > (bounds.maxY - ballRadius)) || (adjustedBallPosition.y < (bounds.minY + ballRadius))) {
+//            newVector.dy = vector.dy * -1;
+//        }
         
 
         return newVector
