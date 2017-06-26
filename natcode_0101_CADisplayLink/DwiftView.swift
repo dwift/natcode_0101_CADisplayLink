@@ -3,15 +3,8 @@
 //  natcode_0101_CAVersion
 //
 //  Created by Carlyn Maw on 6/24/17.
-//  Copyright © 2017 carlynorama. All rights reserved.
+//  Copyright © 2017 carlynorama. No rights reserved.
 //
-
-//
-//  DwiftView.swift
-//  natcode_0101_ghostkiller
-//
-//  Created by Carlyn Maw on 6/23/17.
-//  Copyright © 2017 carlynorama. No rights reserved
 //
 
 import UIKit
@@ -27,10 +20,6 @@ class DwiftView: UIView {
         displayLink.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
         return displayLink
     }()
-    
-    //    private var displayLink : CADisplayLink?
-    //    private var startTime = 0.0
-    //    private let animLength = 5.0
     
     
     //MARK: Inspectables
@@ -114,40 +103,6 @@ class DwiftView: UIView {
     func stopUpdateLoop() {
         displayLink.isPaused = true
     }
-    
-    //TODO: Refactor Like this? Touch go and Stop?
-    //    func startDisplayLink() {
-    //
-    //        // make sure to stop a previous running display link
-    //        stopDisplayLink()
-    //
-    //        // reset start time
-    //        startTime = CACurrentMediaTime()
-    //
-    //        // create displayLink & add it to the run-loop
-    //        displayLink = CADisplayLink(target: self, selector: #selector(displayLinkDidFire))
-    //        displayLink?.add(to: .main, forMode: .commonModes)
-    //
-    //        // for Swift 2: displayLink?.addToRunLoop(NSRunLoop.currentRunLoop(), forMode:NSDefaultRunLoopMode)
-    //    }
-    //
-    //    @objc func displayLinkDidFire() {
-    //
-    //        var elapsed = CACurrentMediaTime() - startTime
-    //
-    //        if elapsed > animLength {
-    //            stopDisplayLink()
-    //            elapsed = animLength // clamp the elapsed time to the anim length
-    //        }
-    //
-    //        // do your animation logic here
-    //    }
-    //
-    //    // invalidate display link if it's non-nil, then set to nil
-    //    func stopDisplayLink() {
-    //        displayLink?.invalidate()
-    //        displayLink = nil
-    //    }
     
     
     //MARK: Paths
